@@ -1,10 +1,10 @@
 {
-    "name": "flowwow/cloudpayments-php-client",
+    "name": "jburgyan/cloudpayments-php-client",
     "description": "cloudpayments api client",
     "license": "MIT",
     "authors": [
         {
-            "name": "Mogilat Ivan",
+            "name": "Jozsef Burgyan",
             "email": "freefess@yandex.ru"
         }
     ],

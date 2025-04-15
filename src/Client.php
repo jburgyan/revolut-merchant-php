@@ -27,6 +27,9 @@ class Client
     /** The API key */
     private string $apiKey;
 
+	/** The API version */
+	private string $apiVersion;
+
     private \GuzzleHttp\Client $httpClient;
 
     /**
@@ -46,9 +49,10 @@ class Client
      * @param bool $sandbox
      * @return void
      */
-    public function __construct(string $apiKey, bool $sandbox = false)
+    public function __construct(string $apiKey, bool $sandbox = false, $apiVersion = '2024-09-01')
     {
         $this->apiKey     = $apiKey;
+	    $this->apiVersion = $apiVersion;
         $this->sandbox    = $sandbox;
         $this->httpClient = new \GuzzleHttp\Client();
         $this->order      = new OrderResource($this);
@@ -159,9 +163,10 @@ class Client
     private function buildOptions(array $options = []): array
     {
         return array_merge($options, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->apiKey
-            ],
+	        'headers' => [
+		        'Authorization' => 'Bearer ' . $this->apiKey,
+		        'Revolut-Api-Version' => $this->apiVersion
+	        ],
         ]);
     }
 
