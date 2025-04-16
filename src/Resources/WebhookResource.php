@@ -6,8 +6,8 @@ namespace Flowwow\RevolutMerchant\Resources;
 use Flowwow\RevolutMerchant\Exceptions\MerchantException;
 use Flowwow\RevolutMerchant\Requests\WebhookCreate;
 use Flowwow\RevolutMerchant\Requests\WebhookUpdate;
-use Flowwow\RevolutMerchant\Responses\Customer;
-use Flowwow\RevolutMerchant\Responses\Webhook;
+use Flowwow\RevolutMerchant\Models\Customer;
+use Flowwow\RevolutMerchant\Models\Webhook;
 
 class WebhookResource extends Resource
 {

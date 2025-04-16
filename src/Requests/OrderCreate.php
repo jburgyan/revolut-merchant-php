@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Flowwow\RevolutMerchant\Requests;
 
-use Flowwow\RevolutMerchant\Responses\Customer;
-use Flowwow\RevolutMerchant\Responses\IndustryData;
-use Flowwow\RevolutMerchant\Responses\LineItem;
-use Flowwow\RevolutMerchant\Responses\MerchantOrderData;
-use Flowwow\RevolutMerchant\Responses\Shipping;
-use Flowwow\RevolutMerchant\Responses\UpcomingPaymentData;
+use Flowwow\RevolutMerchant\Models\Customer;
+use Flowwow\RevolutMerchant\Models\IndustryData;
+use Flowwow\RevolutMerchant\Models\LineItem;
+use Flowwow\RevolutMerchant\Models\MerchantOrderData;
+use Flowwow\RevolutMerchant\Models\Shipping;
+use Flowwow\RevolutMerchant\Models\UpcomingPaymentData;
 use Spatie\DataTransferObject\DataTransferObject;
 
 /**

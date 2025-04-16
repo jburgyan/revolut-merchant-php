@@ -2,24 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Flowwow\RevolutMerchant\Responses;
-
+namespace Flowwow\RevolutMerchant\Models;
 
 use Spatie\DataTransferObject\DataTransferObject;
 
 /**
- * When you use this request to update a customer's payment method,
- * the payment method can't be used for merchant initiated transactions (MIT) any more.
- * This payment method can be used only when the customer is on the checkout page.
+ * A customer's payment method
  */
-class PaymentMethod extends DataTransferObject
+class CustomerPaymentMethod extends DataTransferObject
 {
 	/**
 	 * The ID of the payment method.
 	 *
-	 * @var int|null
+	 * @var string $id
 	 */
-	public ?int $id;
+	public string $id;
 
 	/**
 	 * Possible values: [CARD, REVOLUT_PAY]
@@ -29,7 +26,7 @@ class PaymentMethod extends DataTransferObject
 	 *
 	 * Only merchant initiated transactions are supported for saved REVOLUT_PAY payment methods.
 	 *
-	 * @var string|null
+	 * @var string|null $type
 	 */
 	public ?string $type;
 
@@ -42,12 +39,14 @@ class PaymentMethod extends DataTransferObject
 	 * MERCHANT: This payment method can be used without the customer being on the checkout page,
 	 * and the merchant can initiate transactions, for example, to take payments for recurring transactions.
 	 *
-	 * @var string|null
+	 * @var string|null $saved_for
 	 */
 	public ?string $saved_for;
 
 	/**
-	 * @var MethodDetails|null
+	 * The details of the payment method.
+	 *
+	 * @var MethodDetails|null $method_details
 	 */
 	public ?MethodDetails $method_details;
 }

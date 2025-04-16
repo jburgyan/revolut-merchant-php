@@ -7,8 +7,8 @@ use Flowwow\RevolutMerchant\Requests\CustomerCreate;
 use Flowwow\RevolutMerchant\Requests\CustomerUpdate;
 use Flowwow\RevolutMerchant\Requests\PaymentMethodList;
 use Flowwow\RevolutMerchant\Requests\PaymentMethodUpdate;
-use Flowwow\RevolutMerchant\Responses\Customer;
-use Flowwow\RevolutMerchant\Responses\MethodDetails;
+use Flowwow\RevolutMerchant\Models\Customer;
+use Flowwow\RevolutMerchant\Models\MethodDetails;
 
 class CustomerResource extends Resource
 {

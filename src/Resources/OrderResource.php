@@ -10,8 +10,8 @@ use Flowwow\RevolutMerchant\Requests\OrderCreate;
 use Flowwow\RevolutMerchant\Requests\OrderList;
 use Flowwow\RevolutMerchant\Requests\OrderRefund;
 use Flowwow\RevolutMerchant\Requests\OrderUpdate;
-use Flowwow\RevolutMerchant\Responses\Order;
-use Flowwow\RevolutMerchant\Responses\OrderShort;
+use Flowwow\RevolutMerchant\Models\Order;
+use Flowwow\RevolutMerchant\Models\OrderShort;
 
 class OrderResource extends Resource
 {

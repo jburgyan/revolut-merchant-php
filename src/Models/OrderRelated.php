@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flowwow\RevolutMerchant\Responses;
+namespace Flowwow\RevolutMerchant\Models;
 
 use Spatie\DataTransferObject\DataTransferObject;
 
