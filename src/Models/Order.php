@@ -214,4 +214,137 @@ class Order extends DataTransferObject
 	 */
 	public ?array $payments;
 
+	/**
+	 * Unique ID representing the location where merchants sells products.
+	 * note
+	 *
+	 * Currently, only online locations are supported.
+	 * info
+	 *
+	 * For more information, see: Locations.
+	 *
+	 * @var string|null $location_id
+	 */
+	public ?string $location_id;
+
+	/**
+	 * Possible number of items: <= 50 items
+	 *
+	 * Additional information to track your orders in your system, by providing custom metadata using "<key>" : "<value>" pairs.
+	 * caution
+	 *
+	 * Restrictions:
+	 *
+	 * Max number of items: 50
+	 * Max length of metadata values: 500
+	 * Format of metadata keys: ^[a-zA-Z][a-zA-Z\\d_]{0,39}$
+	 *
+	 * @var array|null $metadata
+	 */
+	public ?array $metadata;
+
+	/**
+	 * Object containing industry-specific information associated with the order.
+	 *
+	 * @var IndustryData|null $industry_data
+	 */
+	public ?IndustryData $industry_data;
+
+	/**
+	 * Object for providing additional information stored in the merchant's order management system.
+	 *
+	 * @var MerchantOrderData|null
+	 */
+	public ?MerchantOrderData $merchant_order_data;
+
+	/**
+	 * Object containing information about upcoming payments associated with the order.
+	 *
+	 * @var UpcomingPaymentData|null $upcoming_payment_data
+	 */
+	public ?UpcomingPaymentData $upcoming_payment_data;
+
+	/**
+	 * Link to a checkout page hosted by Revolut.
+	 *
+	 * @var string|null $checkout_url
+	 */
+	public ?string $checkout_url;
+
+	/**
+	 * Pattern: Value must match regular expression ^https:\/{2}.+/gi
+	 *
+	 * The URL your customer will be redirected to after completing a payment on the hosted checkout page
+	 * (checkout_url parameter's value of the order).
+	 * info
+	 *
+	 * For more information on how to use the redirect_url, see: Custom redirection via the API
+	 *
+	 * @var string|null $redirect_url
+	 */
+	public ?string $redirect_url;
+
+	/**
+	 * Details about the shipping related to the order, including address, contact information, and individual shipments.
+	 * info
+	 *
+	 * Required for retail merchants.
+	 * Omitting this information may trigger additional scrutiny and risk mitigation actions by the Revolut risk team.
+	 *
+	 * @var Shipping|null
+	 */
+	public ?Shipping $shipping;
+
+	/**
+	 * Possible values: [automatic, forced]
+	 *
+	 * Default value: automatic
+	 *
+	 * The enforce challenge mode. automatic is used by default.
+	 * automatic
+	 * The payments created for an order will have challenge requirement calculated by our fraud mechanisms.
+	 * Not all payments will trigger a 3DS challenge.
+	 * forced
+	 * The payments created for an order will always require a 3DS challenge. Currently only supported for card payments.
+	 *
+	 * @var string|null $enforce_challenge
+	 */
+	public ?string $enforce_challenge = 'automatic';
+
+	/**
+	 * Possible number of items: <= 250 items
+	 *
+	 * An array of line items included in the order.
+	 * Each line item represents an individual product or service, along with its quantity, price, taxes, and discounts.
+	 * info
+	 *
+	 * Required for retail merchants.
+	 * Omitting this information may trigger additional scrutiny and risk mitigation actions by the Revolut risk team.
+	 *
+	 * @var LineItem[]|null $line_items
+	 */
+	public ?array $line_items;
+
+	/**
+	 * Possible length: non-empty and <= 19 characters
+	 * Pattern: Value must match regular expression ^[^*\n\r\\]+$
+	 *
+	 * You can set a dynamic statement descriptor for your orders by providing a custom suffix.
+	 *
+	 * A statement descriptor is the text shown on cardholders' bank or card statements, helping them recognise a transaction or merchant. This field can be used to send extra information with the statement descriptor for card transactions.
+	 *
+	 * The complete descriptor is built using the following format: {base}*{suffix}, where:
+	 *
+	 * {base} is the existing descriptor configured in the Revolut Business dashboard (Settings > Business account > Merchant profile > Statement descriptor).
+	 * {suffix} is defined by the statement_descriptor_suffix field.
+	 *
+	 * note
+	 *
+	 * If the combined descriptor's length (base + suffix) exceeds the character limits of card scheme providers, the final value will be truncated. For example if the limit is 22 characters, the base descriptor is "base" and the suffix is "testdescriptorsuffix", the final descriptor becomes "base*testdescriptorsuf".
+	 * The final statement descriptor shown on a cardholder's statement may vary by issuing bank, as some banks apply their own custom formatting or truncation rules.
+	 *
+	 * @var string|null $statement_descriptor_suffix
+	 */
+	public ?string $statement_descriptor_suffix;
+
 }
