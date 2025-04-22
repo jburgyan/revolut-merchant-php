@@ -122,7 +122,15 @@ class OrderResource extends Resource
      */
     public function refund(string $id, OrderRefund $json): Order
     {
-        $response = $this->client->post(self::ENDPOINT . '/' . $id . '/refund', ['json' => $json->toArray()]);
+        $response = $this->client->post(
+			self::ENDPOINT . '/' . $id . '/refund',
+			[
+				'json' => $json->toArray(),
+				'headers' => [
+					'Idempotency-Key' => 'refund-' . $id
+				]
+			]
+        );
 
         return new Order($response);
     }
